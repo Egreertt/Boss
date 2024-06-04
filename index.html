@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adsgram Integration</title>
+    <script src="https://cdn.adsgram.ai/js/sdk.min.js"></script>
+</head>
+<body>
+    <button id="showAdButton">Показать рекламу</button>
+    <script>
+        document.getElementById('showAdButton').addEventListener('click', function() {
+            try {
+                const AdController = window.Adsgram.init({ blockId: "102", debug: true });
+
+                AdController.show().then((result) => {
+                    console.log('Реклама показана полностью');
+                }).catch((result) => {
+                    console.error('Ошибка или реклама пропущена:', result);
+                });
+            } catch (error) {
+                console.error('Ошибка инициализации Adsgram:', error);
+            }
+        });
+    </script>
+</body>
+</html>
