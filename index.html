@@ -4,39 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adsgram Video Ad</title>
+    <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+</head>
+<body>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             try {
-                // Проверка загрузки SDK
-                const sdkScript = document.createElement('script');
-                sdkScript.src = "https://cdn.adsgram.ai/sdk.js";
-                sdkScript.onload = async () => {
-                    // Убедимся, что AdController доступен
-                    if (typeof AdController !== 'undefined') {
-                        await AdController.load({
-                            blockId: 150 // Ваш Block ID
-                        });
-                        const result = await AdController.show();
-                        if (result.done) {
-                            console.log('Ad watched till the end');
-                        } else {
-                            console.log('Ad not watched till the end');
-                        }
-                    } else {
-                        console.error('AdController is not defined');
-                    }
-                };
-                sdkScript.onerror = () => {
-                    console.error('Failed to load Adsgram SDK');
-                };
-                document.head.appendChild(sdkScript);
+                await AdController.load({
+                    blockId: 150 // Ваш Block ID
+                });
+                const result = await AdController.show();
+                if (result.done) {
+                    console.log('Ad watched till the end');
+                } else {
+                    console.log('Ad not watched till the end');
+                }
             } catch (error) {
                 console.error('Error showing ad:', error);
             }
         });
     </script>
-</head>
-<body>
 </body>
 </html>
-
