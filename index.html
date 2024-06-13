@@ -10,10 +10,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             try {
-                await AdController.load({
-                    blockId: 150 // Ваш Block ID
-                });
-                const result = await AdController.show();
+                const result = await AdController.show({ blockId: 150 });
                 if (result.done) {
                     console.log('Ad watched till the end');
                 } else {
@@ -23,6 +20,10 @@
                 console.error('Error showing ad:', error);
             }
         });
+    </script>
+</body>
+</html>
+
     </script>
 </body>
 </html>
